@@ -4,16 +4,18 @@ import java.io.Serializable;
 
 import groovy.transform.builder.Builder;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class BeerEvent implements Serializable{
 	
 
-	private static final long serialVersionUID = 8220993829850031692L;
-	private final BeerDto beerDto;
+	 static final long serialVersionUID = 8220993829850031692L;
+	private  BeerDto beerDto;
 
 
 }
