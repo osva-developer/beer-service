@@ -8,7 +8,10 @@ import org.springframework.jms.support.converter.MessageType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Configuration
+@Slf4j
 public class JmsConfig {
   
 	public static final String BREWING_REQUEST_QUEUE = "brewing-request";
@@ -20,6 +23,7 @@ public class JmsConfig {
         converter.setTargetType(MessageType.TEXT);
         converter.setTypeIdPropertyName("_type");
         converter.setObjectMapper(objectMapper);
+        log.info("THIS IS JMS CONFIG CLASS");
         return converter;
-    }
+    } 
 }
