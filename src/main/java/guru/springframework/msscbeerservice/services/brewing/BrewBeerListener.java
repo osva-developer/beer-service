@@ -1,5 +1,6 @@
 package guru.springframework.msscbeerservice.services.brewing;
 
+import lombok.AllArgsConstructor;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
