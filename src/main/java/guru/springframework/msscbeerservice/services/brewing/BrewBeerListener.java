@@ -30,7 +30,7 @@ public class BrewBeerListener {
 
         Beer beer = beerRepository.getOne(beerDto.getId());
 
-        beerDto.setQuantityOnHand(beer.getQuantityToBrew());
+        beerDto.setQuantityOnHand(beer.getQuantityToBrew()); // quantity that we want create
 
         NewInventoryEvent newInventoryEvent = new NewInventoryEvent(beerDto);
 

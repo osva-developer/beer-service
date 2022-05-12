@@ -1,16 +1,21 @@
 package guru.springframework.msscbeerservice.services.order;
 
-import guru.sfg.brewery.model.events.ValidateOrderRequest;
-import guru.sfg.brewery.model.events.ValidateOrderResult;
-import guru.springframework.msscbeerservice.config.JmsConfig;
-import lombok.RequiredArgsConstructor;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
+import guru.sfg.brewery.model.events.ValidateOrderRequest;
+import guru.sfg.brewery.model.events.ValidateOrderResult;
+import guru.springframework.msscbeerservice.config.JmsConfig;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+/*
+ * Validate if exist this beer en the shoop, and response to the beer-order service microservice
+ */
 @RequiredArgsConstructor
 @Component
+@Slf4j
 public class BeerOrderValidationListener {
 
     private final BeerOrderValidator validator;
@@ -19,6 +24,7 @@ public class BeerOrderValidationListener {
     @JmsListener(destination = JmsConfig.VALIDATE_ORDER_QUEUE)
     public void listen(ValidateOrderRequest validateOrderRequest){
         Boolean isValid = validator.validateOrder(validateOrderRequest.getBeerOrder());
+        log.debug("the order validator is: {}",isValid);
 
         jmsTemplate.convertAndSend(JmsConfig.VALIDATE_ORDER_RESPONSE_QUEUE,
                 ValidateOrderResult.builder()
