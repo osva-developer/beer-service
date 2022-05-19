@@ -21,7 +21,7 @@ public class BeerOrderValidator {
         AtomicInteger beersNotFound = new AtomicInteger();
 
         beerOrder.getBeerOrderLines().forEach(orderline -> {
-            if(beerRepository.findByUpc(orderline.getUpc()) == null){//if this beer not exist
+            if(beerRepository.findByUpc(orderline.getUpc()) == null){
                 beersNotFound.incrementAndGet();
             }
         });

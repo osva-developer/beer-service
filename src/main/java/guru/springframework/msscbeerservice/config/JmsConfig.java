@@ -1,17 +1,13 @@
 package guru.springframework.msscbeerservice.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.slf4j.Slf4j;
-
 @Configuration
-@Slf4j
 public class JmsConfig {
 
     public static final String BREWING_REQUEST_QUEUE = "brewing-request";

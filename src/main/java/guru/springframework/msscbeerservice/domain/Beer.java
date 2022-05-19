@@ -30,11 +30,11 @@ public class Beer {
     @Version
     private Long version;
 
- 
+    @CreationTimestamp
     @Column(updatable = false)
     private Timestamp createdDate;
 
-   
+    @UpdateTimestamp
     private Timestamp lastModifiedDate;
 
     private String beerName;
@@ -45,8 +45,8 @@ public class Beer {
 
     private BigDecimal price;
 
-    private Integer minOnHand;  //Minimum amount to have in inventory
-    private Integer quantityToBrew;  
+    private Integer minOnHand;
+    private Integer quantityToBrew;
 
 
 }
